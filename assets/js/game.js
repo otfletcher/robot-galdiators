@@ -17,11 +17,9 @@ var enemyHealth = 50;
 var enemyAttack = 12;
 
 var fight = function(enemyNames) {
-    // Alert playets that they are starting the round
-   window.alert("Welcome to Robot Gladiators!");
 
     var promptFight = window.prompt("Would you like to FIGHT or SKIP this battle? Enter 'FIGHT' or 'SKIP' to choose.");
-
+   while(enemyHealth > 0) {
     if (promptFight === "fight" || promptFight === "FIGHT") {
         // remove enemy's health by subtracting the amount set in playerAttack variable
         enemyHealth = enemyHealth - playerAttack;
@@ -49,7 +47,7 @@ var fight = function(enemyNames) {
             window.alert(playerName + " still has " + playerHealth + " health left.");
         }
         // if player chooses to skip
-    } else if (promptFight === "skip" || promptFight === "SKIP") {
+    } if (promptFight === "skip" || promptFight === "SKIP") {
         // confirm player wants to skip
         var confirmSkip = window.confirm("Are you sure you'd like to quit?");
 
@@ -64,8 +62,11 @@ var fight = function(enemyNames) {
             fight();
         }
     }
+   }
 };
 
 for(var i = 0; i < enemyNames.length; i++) {
-    fight(enemyNames[i]);
+    var pickedEnemyName = enemyNames[i];
+    enemyHealth = 50;
+    fight(pickedenemyNames[i]);
 }
