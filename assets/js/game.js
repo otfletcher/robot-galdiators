@@ -1,5 +1,8 @@
+var randomNumber = function(min, max) {
+    var value = Math.floor(Math.random() * (max - min + 1) + min);
 
-
+    return value;
+ };
 
 var fight = function(enemy) {
     console.log(enemy);
@@ -61,9 +64,6 @@ var fight = function(enemy) {
 // function to start a new game
 var startGame = function() {
     // reset player stats
-    playerInfo.health = 100;
-    playerInfo.attack = 10;
-    playerInfo.money = 10;
     playerInfo.reset();
 
 for (var i = 0; i < enemyInfo.length; i++) {
@@ -74,7 +74,7 @@ for (var i = 0; i < enemyInfo.length; i++) {
 
     var pickedEnemyObj = enemyInfo[i];
 
-    pickedEnemyObj = randomNumber(40, 60);
+    pickedEnemyObj.health = randomNumber(40, 60);
 
     fight(pickedEnemyObj);
     // if we're not at the last enemy in array
@@ -122,30 +122,24 @@ for (var i = 0; i < enemyInfo.length; i++) {
     );
 
     switch (shopOptionPrompt) {
-        case "REFILL":
-        case "refill":
+        case 'REFILL':
+        case 'refill':
             playerInfo.refillHealth();
             break;
-        case "UPGRADE":
-        case "upgrade":
+        case 'UPGRADE':
+        case 'upgrade':
             playerInfo.upgradeAttack();
             break;
-        case "LEAVE":
-        case "leave":
-            window.alert("Leaving the store.");
+        case 'LEAVE':
+        case 'leave':
+            window.alert('Leaving the store.');
             break;
         default:
-            window.alert("You did not pick a valid option. Try again.");
+            window.alert('You did not pick a valid option. Try again.');
 
             shop();
             break;
     }
- };
-
- var randomNumber = function(min, max) {
-    var value = Math.floor(Math.random() * (max - min + 1) + min);
-
-    return value;
  };
 
  var playerInfo = {
@@ -182,17 +176,22 @@ for (var i = 0; i < enemyInfo.length; i++) {
 
 var enemyInfo = [
     {
-        name: "Roborto",
+        name: 'Roborto',
         attack: randomNumber(10,14)
     },
     {
-        name: "Amy Android",
+        name: 'Amy Android',
         attack: randomNumber(10,14)
     },
     {
-        name: "Robo Trumble",
+        name: 'Robo Trumble',
         attack: randomNumber(10, 14)
     }
 ];
 
- startGame();
+console.log(enemyInfo);
+console.log(enemyInfo[0]);
+console.log(enemyInfo[0].name);
+console.log(enemyInfo[0]['attack']);
+
+startGame();
